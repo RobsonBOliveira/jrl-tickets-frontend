@@ -1,18 +1,15 @@
-🚀 Iniciando o Projeto
-📦 Requisitos
-Antes de começar, certifique-se de que você possui os seguintes requisitos instalados em sua máquina:
+# Requisitos para rodar o projeto
 
-Node.js (versão recomendada: LTS)
+- [Node.js](https://nodejs.org/pt) instalado na máquina
 
-▶️ Como Executar o Projeto
-Siga os passos abaixo para instalar as dependências e iniciar o servidor de desenvolvimento:
+# Como rodar o projeto
 
-bash
-Copiar
-Editar
-# Instale as dependências do projeto
+1. Abra um terminal na sua IDE ou pasta do projeto.
+2. Execute os comandos abaixo:
+
+```bash
 npm install
-
-# Inicie o servidor de desenvolvimento
 npm run dev
-Após a execução, o projeto estará disponível no seu navegador na porta configurada (por padrão: http://localhost:5173).
+```
+
+3. O projeto estará rodando na porta configurada (padrão: http://localhost:5173).
