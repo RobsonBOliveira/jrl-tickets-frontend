@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState , useEffect} from 'react'
 import api from '../../services/api'
 
 function Register({ setIsLogin }) {
@@ -9,17 +9,39 @@ function Register({ setIsLogin }) {
 	const pass = useRef()
 	const confPass = useRef()
 
-	async function register() {
-		const response = await api.post('/user', {
-			name: name.current.value,
-			email: email.current.value,
-			password: pass.current.value
-		})
-		setPopupMessage('Cadastro realizado com sucesso!') // ou mensagem de erro
-		setShowPopup(true)
+	useEffect(() => {
+    document.title = "Register";
+  }, []);
 
-		// esconde depois de alguns segundos
-		setTimeout(() => setShowPopup(false), 3000)
+	async function register() {
+		if(pass.current.value == confPass.current.value){
+			try {
+			await api.post('/user', {
+				name: name.current.value,
+				email: email.current.value,
+				password: pass.current.value
+			})
+
+			//seta a msg do popup e mostra na tela
+			setPopupMessage('Cadastro realizado com sucesso!')
+			setShowPopup(true)
+
+			//apos um tempo, desliga o popup e redireciona para login
+			setTimeout(() => {
+				setShowPopup(false)
+				setIsLogin(true)
+			}, 3000)
+		} catch {
+			setPopupMessage('Usuário já cadastrado!') // ou mensagem de erro
+			setShowPopup(true)
+			setTimeout(() => setShowPopup(false), 3000)
+		}
+		} else {
+			setPopupMessage('Senhas diferem!') // ou mensagem de erro
+			setShowPopup(true)
+			setTimeout(() => setShowPopup(false), 3000)
+		}
+		
 	}
 	return (
 		<>
@@ -39,7 +61,7 @@ function Register({ setIsLogin }) {
 				<label htmlFor="confirm-password">Confirmar Senha</label>
 				<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha" ref={confPass} required />
 
-				<button onClick={() => register()}>Cadastrar</button>
+				<button onClick={register}>Cadastrar</button>
 
 				<div className="extra-links">
 					<a onClick={() => setIsLogin(true)}>Já tenho conta</a>

@@ -5,7 +5,7 @@ import './AuthPage.css'
 
 
 function AuthPage() {
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
 
     return (
         <div className="auth-container">

@@ -9,9 +9,13 @@ function TopBar() {
         navigate('/auth')
     }
 
+    function handleLogoClick(){
+        navigate('/')
+    }
+
     return (
         <div className="top-bar">
-            <div className="logo">
+            <div className="logo" onClick={handleLogoClick}>
                 <img src={Logo} className="logo-img" alt="Logo" />
                 <span className="logo-text">JRL Tickets</span>
             </div>
