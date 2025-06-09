@@ -8,17 +8,24 @@
 }
 
 .popup-message {
-  position: absolute;
-  top: 90px; /* ajusta para ficar logo abaixo da barra superior */
-  right: 20px;
-  background-color: #969696;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
   color: white;
-  padding: 12px 20px;
+  padding: 1rem 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   z-index: 1000;
-  display: none; /* inicia invisível */
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
 }
 
 /* Container central */
